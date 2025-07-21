@@ -14,17 +14,19 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+     <!-- Bootstrap CSS via CDN (chargé en premier) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+          rel="stylesheet" 
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+          crossorigin="anonymous">
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-      rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT6N8tBtFPR9O7UknfF0ks+N" 
-      crossorigin="anonymous">
+    <!-- Ton CSS personnalisé (chargé après Bootstrap pour pouvoir surcharger les styles si besoin) -->
+      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+      <%= javascript_importmap_tags %>
   </head>
 
  <body class="d-flex flex-column">
-    <header class="bg-dark p-4 mb-4">
+    <header class="p-4 mb-4">
       <nav class="container-fluid d-flex justify-content-between align-items-center">            
         <h1 class="h1 m-0">Eventbrite-Clone</h1>
         <div>
@@ -40,11 +42,19 @@
 
             <% if user_signed_in? %>
               <span class="text-white me-3"><br>Bonjour <%= current_user.first_name %> !</span>              
-              <%= link_to "Mon profil", profile_path, class: "nav-link" %>
             <% end %>
-          </ul>
-      </div>
-    </nav>
+        </div>
+      </nav>
+    </header>
+
+     <main class="container flex-grow-1">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
+          <%= message %>
+        </div>
+      <% end %>      
+    <%= yield %>
+    </main>
 
     <!-- Flash messages -->
       <% flash.each do |key, message| %>
@@ -56,11 +66,22 @@
         </div>
       <% end %>
 
-    <%= yield %>
+    <footer class="bg-secondary text-light py-1 mt-auto">
+      <div class="container text-center">
+        <small>© 2025 - EVENTBRITE-CLONE - Tous droits réservés.</small><br>
+        <small>Contact : <a href="mailto:contact@eventbriteclone.com" class="text-light text-decoration-underline">contact@thegossipproject.com</a></small>
+      </div>
+    </footer>
 
-    <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-      integrity="sha384-w76A2z02tPqdjL+eE+zWPOsKzOepLY3rZQz1F+qcB1zFf+0YJXkk+GkC9oF5p4Uk" 
-      crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          document.querySelectorAll('.alert').forEach(el => {
+            el.classList.remove('show');
+            setTimeout(() => el.remove(), 300); // attends la fin de l'animation
+          });
+        }, 5000); // 5 secondes
+      });
+    </script>
   </body>
 </html>
