@@ -1,0 +1,22 @@
+<h2>Événements à venir</h2>
+
+<% @events.each do |event| %>
+  <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+    <h3><%= link_to event.title, event_path(event) %></h3>
+    <p><strong>Lieu :</strong> <%= event.location %></p>
+    <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y à %Hh%M") %></p>
+    <p><strong>Durée :</strong> <%= event.duration %> minutes</p>
+    <p><strong>Prix :</strong> <%= event.price %> €</p>
+    <p><%= truncate(event.description, length: 100) %></p>
+
+    <% if user_signed_in? %>
+      <% if event.participants.include?(current_user) %>
+        <p class="text-success fw-bold">Tu es déjà inscrit à cet événement 🎉</p>
+      <% else %>
+        <%= link_to "S'inscrire", new_event_attendance_path(event), class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+      <%= link_to "Connectez-vous pour vous inscrire", new_user_session_path %>
+    <% end %>
+  </div>
+<% end %>

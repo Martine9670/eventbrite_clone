@@ -1,0 +1,8 @@
+<h1>Nouvelle participation à ton événement 🎉</h1>
+
+<p><strong><%= @participant.first_name %> <%= @participant.last_name %></strong> vient de s'inscrire à ton événement :</p>
+
+<h2><%= @event.title %></h2>
+<p><%= @event.description %></p>
+<p><strong>Date :</strong> <%= @event.start_date.strftime("%d/%m/%Y à %Hh%M") %></p>
+<p><strong>Lieu :</strong> <%= @event.location %></p>

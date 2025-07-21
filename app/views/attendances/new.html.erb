@@ -1,0 +1,20 @@
+<h2>Inscription à l'événement</h2>
+
+<%= form_with model: [@event, @attendance], local: true do |form| %>
+  <div class="mb-3">
+    <%= form.label :first_name, "Prénom" %>
+    <%= form.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :last_name, "Nom" %>
+    <%= form.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :credit_card_number, "Numéro de carte bleue" %>
+    <%= form.text_field :credit_card_number, class: "form-control" %>
+  </div>
+
+  <%= form.submit "S'inscrire", class: "btn btn-primary" %>
+<% end %>

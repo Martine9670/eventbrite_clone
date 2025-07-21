@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 class="mb-3"><%= @event.title %></h1>
+
+  <p><strong>Description :</strong> <%= @event.description %></p>
+  <p><strong>Date :</strong> <%= l(@event.start_date, format: :long) %></p>
+  <p><strong>Durée :</strong> <%= @event.duration %> minutes</p>
+  <p><strong>Lieu :</strong> <%= @event.location %></p>
+  <p><strong>Prix :</strong> <%= @event.price %> €</p>
+
+  <hr>
+
+  <% if user_signed_in? && current_user.id == @event.user_id %>
+    <h3>Participants :</h3>
+    <% if @event.participants.any? %>
+      <ul>
+        <% @event.participants.each do |participant| %>
+          <li><%= participant.first_name %> <%= participant.last_name %> - <%= participant.email %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>Aucun participant pour le moment.</p>
+    <% end %>
+
+    <%= link_to "Modifier l'événement", edit_event_path(@event), class: "btn btn-warning me-2" %>
+    <%= link_to "Supprimer l'événement", event_path(@event), method: :delete,
+                data: { confirm: "Tu es sûr(e) de vouloir supprimer cet événement ?" },
+                class: "btn btn-danger" %>
+
+  <% elsif user_signed_in? %>
+    <% unless current_user.id == @event.user_id %> 
+      <% if @event.participants.include?(current_user) %>
+        <p class="text-success fw-bold">Tu es déjà inscrit à cet événement 🎉</p>
+      <% else %>
+        <%= link_to "S'inscrire à cet événement", new_event_attendance_path(@event), class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p class="text-muted">Connecte-toi pour t’inscrire à cet événement.</p>
+    <%= link_to "Connexion", new_user_session_path, class: "btn btn-outline-primary" %>
+  <% end %>
+</div>
