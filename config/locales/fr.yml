@@ -1,0 +1,7 @@
+fr:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d %B %Y"
+    day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi]
+    month_names: [~, janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
