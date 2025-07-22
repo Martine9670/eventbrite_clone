@@ -29,4 +29,9 @@ header {
   background-color: black;
 }
 
+.input-small {
+  max-width: 100px;
+}
+
+
 
