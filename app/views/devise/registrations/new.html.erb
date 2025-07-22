@@ -17,7 +17,7 @@
     <%= f.label :birthdate, "Date de naissance" %>
     <%= f.date_select :birthdate, 
     start_year: Date.today.year - 100, 
-    end_year: Date.today.year, 
+    end_year: Date.today.year - 18, 
     order: [:day, :month, :year], 
     class: "form-select" %>
   </div>
