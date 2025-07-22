@@ -1,5 +1,6 @@
 <div class="container">
-  <h1 class="mb-3"><%= @event.title %></h1>
+<h1 class="mb-3"><%= @event.title %></h1>
+<p><strong>Organisé par :</strong> <%= @event.user.first_name %> <%= @event.user.last_name %></p>
 
   <p><strong>Description :</strong> <%= @event.description %></p>
   <p><strong>Date :</strong> <%= l(@event.start_date, format: :long) %></p>
@@ -7,19 +8,23 @@
   <p><strong>Lieu :</strong> <%= @event.location %></p>
   <p><strong>Prix :</strong> <%= @event.price %> €</p>
 
-  <hr>
+<hr>
 
+  <%# Afficher le nombre de participants à tout le monde %>
+  <% if @event.participants.any? %>
+    <p><strong>Nombre de participants :</strong> <%= @event.participants.count %></p>
+  <% else %>
+    <p>Aucun participant pour le moment.</p>
+  <% end %>
+
+  <%# Si c'est l'organisateur, afficher la liste + boutons %>
   <% if user_signed_in? && current_user.id == @event.user_id %>
-    <h3>Participants :</h3>
-    <% if @event.participants.any? %>
-      <ul>
-        <% @event.participants.each do |participant| %>
-          <li><%= participant.first_name %> <%= participant.last_name %> - <%= participant.email %></li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>Aucun participant pour le moment.</p>
-    <% end %>
+    <h5>Liste des participants :</h5>
+    <ul>
+      <% @event.participants.each do |participant| %>
+        <li><%= participant.first_name %> <%= participant.last_name %> - <%= participant.email %></li>
+      <% end %>
+    </ul>
 
     <%= link_to "Modifier l'événement", edit_event_path(@event), class: "btn btn-warning me-2" %>
     <%= link_to "Supprimer l'événement", event_path(@event), method: :delete,

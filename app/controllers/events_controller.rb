@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.includes(:participants, :user).find(params[:id])
   end
 
   def authorize_event_owner
