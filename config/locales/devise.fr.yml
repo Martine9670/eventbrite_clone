@@ -21,3 +21,10 @@ fr:
       timeout: "Votre session a expiré, veuillez vous reconnecter."
       inactive: "Votre compte n'est pas activé."
 
+    passwords:
+      send_instructions: "Vous recevrez un e-mail avec les instructions pour réinitialiser votre mot de passe dans quelques instants."
+      updated: "Votre mot de passe a été modifié avec succès."
+      updated_not_active: "Votre mot de passe a été modifié avec succès, mais votre compte n'est pas encore activé."
+      no_token: "Vous ne pouvez accéder à cette page que depuis un lien de réinitialisation de mot de passe."
+      user:
+        send_instructions: "Vous recevrez un e-mail avec les instructions pour réinitialiser votre mot de passe dans quelques instants."
