@@ -57,12 +57,6 @@
     <%= yield %>
     </main>
 
-    <!-- Flash messages -->
-      <% flash.each do |key, message| %>
-        <% bootstrap_class = key == "notice" ? "alert alert-success" : "alert alert-danger" %>
-        <% custom_class = "flash #{key}" %>
-      <% end %>
-
     <footer class="bg-secondary text-light py-1 mt-auto">
       <div class="container text-center">
         <small>© 2025 - EVENTBRITE-CLONE - Tous droits réservés.</small><br>

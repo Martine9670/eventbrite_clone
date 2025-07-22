@@ -1,7 +1,7 @@
 <%= form_with model: @event, local: true do |form| %>
   <% if @event.errors.any? %>
     <div class="alert alert-danger">
-      <h4><%= pluralize(@event.errors.count, "erreur") %> empêchent la sauvegarde :</h4>
+      <h4><%= pluralize(@event.errors.count, "erreur") %> Échec de la sauvegarde :</h4>
       <ul>
         <% @event.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

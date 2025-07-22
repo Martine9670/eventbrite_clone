@@ -5,3 +5,19 @@ fr:
       long: "%d %B %Y"
     day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi]
     month_names: [~, janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
+
+  devise:
+    sessions:
+      signed_in: "Connexion réussie."
+      signed_out: "Déconnexion réussie."
+      already_signed_out: "Tu es déjà déconnecté(e)."
+
+    failure:
+      unauthenticated: "Vous devez vous connecter pour accéder à cette page."
+      user:
+        unauthenticated: "Vous devez vous connecter pour accéder à cette page."
+      invalid: "Email ou mot de passe invalide."
+      locked: "Votre compte est verrouillé."
+      timeout: "Votre session a expiré, veuillez vous reconnecter."
+      inactive: "Votre compte n'est pas activé."
+

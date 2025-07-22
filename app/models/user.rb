@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :attended_events, through: :attendances, source: :event
 
-  validates :birthdate, presence: true
+  validates :birthdate, presence: true, on: :create
   validate :must_be_at_least_18
 
   after_create :send_welcome_email

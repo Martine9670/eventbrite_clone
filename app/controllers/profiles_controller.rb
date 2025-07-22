@@ -10,15 +10,20 @@ class ProfilesController < ApplicationController
     @user = current_user
   end
 
-  def update
-    @user = current_user
-    if @user.update(user_params)
-      redirect_to profile_path, notice: "Profil mis à jour avec succès."
-    else
-      flash.now[:alert] = "Impossible de mettre à jour votre profil."
-      render :edit
-    end
+def update
+  @user = current_user
+
+  # Empêche d’écraser birthdate si non présent dans le formulaire
+  safe_params = user_params
+  safe_params[:birthdate] = @user.birthdate
+
+  if @user.update(safe_params)
+    redirect_to profile_path, notice: "Profil mis à jour avec succès."
+  else
+    flash.now[:alert] = "Impossible de mettre à jour votre profil."
+    render :edit
   end
+end
 
   def destroy
     current_user.destroy
