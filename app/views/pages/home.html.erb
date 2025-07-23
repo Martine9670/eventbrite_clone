@@ -3,7 +3,8 @@
 <% @events.each do |event| %>
   <div class="mb-3">
     <div class="event-card">
-      <h3><%= link_to event.title, event_path(event) %></h3>
+      <h8>Cliquez ⬇️ pour plus de détails</h8>
+      <h2><%= link_to event.title, event_path(event) %></h2>
         <p><strong>Lieu :</strong> <%= event.location %></p>
         <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y à %Hh%M") %></p>
         <p><strong>Durée :</strong> <%= event.duration %> minutes</p>
