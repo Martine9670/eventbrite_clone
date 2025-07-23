@@ -10,6 +10,12 @@
 
 <hr>
 
+<% if @event.image.attached? %>
+  <%= image_tag url_for(@event.image.variant(resize_to_limit: [300, 300])), class: "img-thumbnail" %>
+<% else %>
+  <p>Aucune image disponible</p>
+<% end %>
+
   <%# Afficher le nombre de participants à tout le monde %>
   <% if @event.participants.any? %>
     <p><strong>Nombre de participants :</strong> <%= @event.participants.count %></p>

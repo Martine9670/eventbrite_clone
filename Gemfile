@@ -3,6 +3,8 @@ source "https://rubygems.org"
 gem 'devise'
 gem 'dotenv'
 gem 'rails-i18n', '~> 8.0'
+gem "image_processing", "~> 1.2"
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.2"

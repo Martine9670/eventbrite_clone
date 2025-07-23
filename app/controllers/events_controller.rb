@@ -43,7 +43,7 @@ end
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_date, :duration, :price, :location)
+    params.require(:event).permit(:title, :description, :start_date, :duration, :price, :location, :image)
   end
 
   def set_event

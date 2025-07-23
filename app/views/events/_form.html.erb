@@ -1,5 +1,4 @@
-<%= form_with model: @event, local: true do |form| %>
-  <% if @event.errors.any? %>
+<%= form_with model: @event, local: true, html: { multipart: true } do |form| %>  <% if @event.errors.any? %>
     <div class="alert alert-danger">
       <h4><%= pluralize(@event.errors.count, "erreur") %> Échec de la sauvegarde :</h4>
       <ul>
@@ -29,7 +28,7 @@
   order: [:day, :month, :year],
   minute_step: 15,
   select_html: { class: "form-select d-inline w-auto me-2" } %>
-  
+
   <div class="mb-3">
     <%= form.label :duration, "Durée (en minutes)" %>
     <%= form.number_field :duration, class: "form-control input-small", min: 5, step: 5 %>
@@ -43,6 +42,11 @@
   <div class="mb-3">
     <%= form.label :location %>
     <%= form.text_field :location, class: "form-control w-25" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :image, "Image de l'événement" %>
+    <%= form.file_field :image, class: "form-control" %>
   </div>
 
   <%= form.submit "Enregistrer", class: "btn btn-primary", data: { turbo: false } %>
