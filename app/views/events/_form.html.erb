@@ -23,19 +23,13 @@
   <div class="mb-3">
     <%= form.label :start_date, "Date et heure de début" %><br/>
 
-    <%= form.date_select :start_date,
-      start_year: Date.today.year,
-      end_year: Date.today.year + 5,
-      order: [:day, :month, :year],
-      select_html: { class: "form-select d-inline w-auto me-2" } %>
-
-    <span class="align-middle mx-2">à</span>
-
-    <%= form.time_select :start_date,
-      minute_step: 15,
-      select_html: { class: "form-select d-inline w-auto" } %>
-  </div>
-
+<%= form.datetime_select :start_date,
+  start_year: Date.today.year,
+  end_year: Date.today.year + 5,
+  order: [:day, :month, :year],
+  minute_step: 15,
+  select_html: { class: "form-select d-inline w-auto me-2" } %>
+  
   <div class="mb-3">
     <%= form.label :duration, "Durée (en minutes)" %>
     <%= form.number_field :duration, class: "form-control input-small", min: 5, step: 5 %>

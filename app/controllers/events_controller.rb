@@ -25,14 +25,15 @@ class EventsController < ApplicationController
     # @event est déjà défini par set_event
   end
 
-  def update
-    if @event.update(event_params)
-      redirect_to @event, notice: "Événement mis à jour avec succès !"
-    else
-      flash.now[:alert] = "Erreur lors de la mise à jour de l'événement."
-      render :edit, status: :unprocessable_entity
-    end
+def update
+  if @event.update(event_params)
+    flash[:notice] = "Mise à jour réussie"
+    redirect_to @event
+  else
+    flash.now[:alert] = @event.errors.full_messages.join(", ")
+    render :edit
   end
+end
 
   def destroy
     @event.destroy
