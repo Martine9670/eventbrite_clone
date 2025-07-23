@@ -4,7 +4,7 @@ class Event < ApplicationRecord
   has_many :participants, through: :attendances, source: :user
 
   validates :start_date, presence: true
-  validate :start_date_cannot_be_in_the_past
+  validate :start_date_must_be_in_future
 
   validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :duration_multiple_of_5
@@ -16,8 +16,12 @@ class Event < ApplicationRecord
 
   private
 
-  def start_date_cannot_be_in_the_past
-    errors.add(:start_date, "can't be in the past") if start_date.present? && start_date < Time.now
+  def start_date_must_be_in_future
+    return if start_date.blank?
+
+    if start_date.to_date < Date.current
+      errors.add(:start_date, "doit être aujourd'hui ou dans le futur")
+    end
   end
 
   def duration_multiple_of_5
