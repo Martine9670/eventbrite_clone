@@ -33,12 +33,16 @@ header {
   max-width: 100px;
 }
 
+h2 {
+  text-align: center;
+}
+
 .event-card {
-  border: 4px solid hsl(180, 92%, 51%);
+  border: 4px solid hsl(357, 92%, 51%);
   padding: 20px;
   margin-bottom: 15px;
   border-radius: 12px;
-  background-color: #f7dada;
+  background-color: #f7e7e7;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   max-width: 500px;
