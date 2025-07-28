@@ -1,24 +1,31 @@
-# README
+# Eventbrite Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simplified clone of the Eventbrite platform, built with Ruby on Rails.  
+The application allows users to sign up, create events, and manage them.
 
-Things you may want to cover:
+## Ruby Version
 
-* Ruby version
+- Ruby 3.2.x  
+- Rails 7.x
 
-* System dependencies
+## System Dependencies
 
-* Configuration
+- SQLite for development/testing  
+- Node.js & Yarn (for managing JS assets)  
+- ImageMagick (for image processing via Active Storage)
 
-* Database creation
+## Main Features
 
-* Database initialization
+- User authentication (via Devise)
 
-* How to run the test suite
+- Create, edit, and delete events
 
-* Services (job queues, cache servers, search engines, etc.)
+- Only the event creator can modify or delete their events
 
-* Deployment instructions
+- Events include: title, description, start date, duration, price, location, and image
 
-* ...
+- Clean and simple UI (using Bootstrap or Tailwind, as preferred)
+
+## Author: Martine PINNA  
+## GitHub: Martine9670 
+## Discord: Martine PINNA
