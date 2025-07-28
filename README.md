@@ -26,6 +26,6 @@ The application allows users to sign up, create events, and manage them.
 
 - Clean and simple UI (using Bootstrap or Tailwind, as preferred)
 
-# Author: Martine PINNA  
-# GitHub: Martine9670 
-# Discord: Martine PINNA
+Author: Martine PINNA  
+GitHub: Martine9670 
+Discord: Martine PINNA
