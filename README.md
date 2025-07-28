@@ -6,7 +6,7 @@ The application allows users to sign up, create events, and manage them.
 ## Ruby Version
 
 - Ruby 3.2.x  
-- Rails 7.x
+- Rails 8.x
 
 ## System Dependencies
 
