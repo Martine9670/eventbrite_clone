@@ -1,6 +1,12 @@
+<% if params[:success] %>
+  <p class="flash notice">Paiement réussi, merci ! 🎉</p>
+<% elsif params[:canceled] %>
+  <p class="flash alert">Paiement annulé.</p>
+<% end %>
+
 <div class="container">
-<h1 class="mb-3"><%= @event.title %></h1>
-<p><strong>Organisé par :</strong> <%= @event.user.first_name %> <%= @event.user.last_name %></p>
+  <h1 class="mb-3"><%= @event.title %></h1>
+  <p><strong>Organisé par :</strong> <%= @event.user.first_name %> <%= @event.user.last_name %></p>
 
   <p><strong>Description :</strong> <%= @event.description %></p>
   <p><strong>Date :</strong> <%= l(@event.start_date, format: :long) %></p>
@@ -8,44 +14,49 @@
   <p><strong>Lieu :</strong> <%= @event.location %></p>
   <p><strong>Prix :</strong> <%= @event.price %> €</p>
 
-<hr>
+  <hr>
 
-<% if @event.image.attached? %>
-  <%= image_tag url_for(@event.image.variant(resize_to_limit: [300, 300])), class: "img-thumbnail" %>
-<% else %>
-  <p>Aucune image disponible</p>
-<% end %>
+  <% if @event.image.attached? %>
+    <%= image_tag url_for(@event.image.variant(resize_to_limit: [300, 300])), class: "img-thumbnail" %>
+  <% else %>
+    <p>Aucune image disponible</p>
+  <% end %>
 
-  <%# Afficher le nombre de participants à tout le monde %>
+  <%# Nombre de participants %>
   <% if @event.participants.any? %>
     <p><strong>Nombre de participants :</strong> <%= @event.participants.count %></p>
   <% else %>
     <p>Aucun participant pour le moment.</p>
   <% end %>
 
-  <%# Si c'est l'organisateur, afficher la liste + boutons %>
-  <% if user_signed_in? && current_user.id == @event.user_id %>
-    <h5>Liste des participants :</h5>
-    <ul>
-      <% @event.participants.each do |participant| %>
-        <li><%= participant.first_name %> <%= participant.last_name %> - <%= participant.email %></li>
-      <% end %>
-    </ul>
+  <%# Affichage selon utilisateur %>
+  <% if user_signed_in? %>
+    <% if current_user.id == @event.user_id %>
+      <%# Organisateur %>
+      <h5>Liste des participants :</h5>
+      <ul>
+        <% @event.participants.each do |participant| %>
+          <li><%= participant.first_name %> <%= participant.last_name %> - <%= participant.email %></li>
+        <% end %>
+      </ul>
 
-    <%= link_to "Modifier l'événement", edit_event_path(@event), class: "btn btn-warning me-2" %>
-    <%= link_to "Supprimer l'événement", event_path(@event), method: :delete,
-                data: { confirm: "Tu es sûr(e) de vouloir supprimer cet événement ?" },
-                class: "btn btn-danger" %>
+      <%= link_to "Modifier l'événement", edit_event_path(@event), class: "btn btn-warning me-2" %>
+      <%= button_to "Supprimer l'événement", event_path(@event), method: :delete,
+                  data: { turbo: false, confirm: "Tu es sûr(e) de vouloir supprimer cet événement ?" },
+                  class: "btn btn-danger" %>
 
-  <% elsif user_signed_in? %>
-    <% unless current_user.id == @event.user_id %> 
+    <% else %>
+      <%# Utilisateur connecté mais pas organisateur %>
       <% if @event.participants.include?(current_user) %>
         <p class="text-success fw-bold">Tu es déjà inscrit à cet événement 🎉</p>
+        <%= button_to "Payer cet événement", checkout_event_path(@event), method: :post, data: { turbo: false }, class: "btn btn-success mt-2" %>
       <% else %>
-        <%= link_to "S'inscrire à cet événement", new_event_attendance_path(@event), class: "btn btn-primary" %>
+        <%= link_to "Rejoindre l’événement", new_event_attendance_path(@event), class: "btn btn-primary" %>
       <% end %>
     <% end %>
+
   <% else %>
+    <%# Utilisateur non connecté %>
     <p class="text-muted">Connecte-toi pour t’inscrire à cet événement.</p>
     <%= link_to "Connexion", new_user_session_path, class: "btn btn-outline-primary" %>
   <% end %>

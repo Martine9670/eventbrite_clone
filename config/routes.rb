@@ -9,10 +9,13 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update, :destroy]
 
   # Événements
-  resources :events do
-    # Inscriptions à un événement
-    resources :attendances, only: [:new, :create]
-  end
+resources :events do
+  # Inscription event
+  resources :attendances, only: [:new, :create]
+
+  # Paiement Stripe
+  post 'checkout', on: :member, to: 'checkout#create'
+end
 
   # Test de santé Rails
   get "up" => "rails/health#show", as: :rails_health_check

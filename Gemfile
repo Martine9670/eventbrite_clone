@@ -1,7 +1,8 @@
 source "https://rubygems.org"
 
+gem 'stripe'
 gem 'devise'
-gem 'dotenv'
+gem 'dotenv-rails'
 gem 'rails-i18n', '~> 8.0'
 gem "image_processing", "~> 1.2"
 

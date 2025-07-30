@@ -35,10 +35,12 @@ def update
   end
 end
 
-  def destroy
-    @event.destroy
-    redirect_to root_path, notice: "Événement supprimé avec succès."
-  end
+def destroy
+  @event = Event.find(params[:id])
+  @event.destroy
+  flash[:notice] = "Événement supprimé avec succès."
+  redirect_to root_path
+end
 
   private
 
