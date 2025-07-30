@@ -10,11 +10,8 @@ Rails.application.routes.draw do
 
   # Événements
 resources :events do
-  # Inscription event
-  resources :attendances, only: [:new, :create]
-
-  # Paiement Stripe
   post 'checkout', on: :member, to: 'checkout#create'
+  get 'attendance_success', on: :member, to: 'attendances#success'
 end
 
   # Test de santé Rails

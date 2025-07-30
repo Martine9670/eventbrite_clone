@@ -17,7 +17,7 @@
             <% if event.participants.include?(current_user) %>
               <p class="text-success fw-bold">Tu es déjà inscrit à cet événement 🎉</p>
             <% else %>
-              <%= link_to "S'inscrire", new_event_attendance_path(event), class: "btn btn-primary" %>
+            <%= button_to "Payer pour s'inscrire", checkout_event_path(event), method: :post, data: { turbo: false }, class: "btn btn-success" %>
             <% end %>
           <% else %>
             <%= link_to "Connectez-vous pour vous inscrire", new_user_session_path, class: "btn btn-primary" %>

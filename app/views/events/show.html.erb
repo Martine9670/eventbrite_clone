@@ -22,17 +22,15 @@
     <p>Aucune image disponible</p>
   <% end %>
 
-  <%# Nombre de participants %>
   <% if @event.participants.any? %>
     <p><strong>Nombre de participants :</strong> <%= @event.participants.count %></p>
   <% else %>
     <p>Aucun participant pour le moment.</p>
   <% end %>
 
-  <%# Affichage selon utilisateur %>
   <% if user_signed_in? %>
     <% if current_user.id == @event.user_id %>
-      <%# Organisateur %>
+      <!-- Organisateur : liste des participants et boutons -->
       <h5>Liste des participants :</h5>
       <ul>
         <% @event.participants.each do |participant| %>
@@ -42,21 +40,19 @@
 
       <%= link_to "Modifier l'événement", edit_event_path(@event), class: "btn btn-warning me-2" %>
       <%= button_to "Supprimer l'événement", event_path(@event), method: :delete,
-                  data: { turbo: false, confirm: "Tu es sûr(e) de vouloir supprimer cet événement ?" },
-                  class: "btn btn-danger" %>
+                    data: { turbo: false, confirm: "Tu es sûr(e) de vouloir supprimer cet événement ?" },
+                    class: "btn btn-danger" %>
 
     <% else %>
-      <%# Utilisateur connecté mais pas organisateur %>
+      <!-- Utilisateur connecté, pas organisateur -->
       <% if @event.participants.include?(current_user) %>
         <p class="text-success fw-bold">Tu es déjà inscrit à cet événement 🎉</p>
-        <%= button_to "Payer cet événement", checkout_event_path(@event), method: :post, data: { turbo: false }, class: "btn btn-success mt-2" %>
       <% else %>
-        <%= link_to "Rejoindre l’événement", new_event_attendance_path(@event), class: "btn btn-primary" %>
+        <%= button_to "Payer cet événement", checkout_event_path(@event), method: :post, data: { turbo: false }, class: "btn btn-success mt-2" %>
       <% end %>
     <% end %>
-
   <% else %>
-    <%# Utilisateur non connecté %>
+    <!-- Utilisateur non connecté -->
     <p class="text-muted">Connecte-toi pour t’inscrire à cet événement.</p>
     <%= link_to "Connexion", new_user_session_path, class: "btn btn-outline-primary" %>
   <% end %>
