@@ -58,4 +58,21 @@ end
       redirect_to root_path
     end
   end
+
+  def join
+  @event = Event.find(params[:id])
+
+    if @event.free?
+      if @event.participations.exists?(user: current_user)
+        flash[:alert] = "Tu participes déjà à cet événement."
+      else
+        @event.participations.create(user: current_user)
+        flash[:notice] = "Tu as rejoint l’événement gratuitement ! 🎉"
+      end
+      redirect_to @event
+    else
+      # Rediriger vers Stripe ou autre paiement
+      redirect_to new_event_payment_path(@event), alert: "Paiement requis pour rejoindre cet événement."
+    end
+  end
 end

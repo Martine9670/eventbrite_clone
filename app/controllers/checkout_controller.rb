@@ -9,6 +9,16 @@ class CheckoutController < ApplicationController
       return
     end
 
+    if event.free?
+      attendance = event.attendances.new(user: current_user)
+      if attendance.save
+        redirect_to event, notice: "Tu as rejoint cet événement gratuitement 🎉"
+      else
+        redirect_to event, alert: "Erreur lors de l'inscription : #{attendance.errors.full_messages.join(', ')}"
+      end
+      return
+    end
+
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{

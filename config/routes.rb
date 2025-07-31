@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 resources :events do
   post 'checkout', on: :member, to: 'checkout#create'
   get 'attendance_success', on: :member, to: 'attendances#success'
+  post 'join', on: :member
 end
 
   # Test de santé Rails
