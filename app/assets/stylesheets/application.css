@@ -10,14 +10,12 @@ html, body {
   border-radius: 5px;
 }
 
-/* Tu peux surcharger certains styles Bootstrap, ou juste ajouter d'autres */
+
 .flash.notice {
-  /* Par exemple, changer la police */
   font-family: 'Arial Black', sans-serif;
 }
 
 .flash.alert {
-  /* Ajouter une ombre */
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
 }
 
