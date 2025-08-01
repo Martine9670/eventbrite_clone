@@ -32,19 +32,19 @@
       <nav class="container-fluid d-flex justify-content-between align-items-center">            
         <h1 class="h1 m-0">💡 Eventbrite-Clone 💡</h1>
         <div>
-            <% if user_signed_in? %>
-          <span class="text-white me-3"><br>Bonjour <%= current_user.first_name %> !</span>
+            <div class="d-flex p-2">
+              <% if user_signed_in? %>
+              <span class="text me-3"><br>Bonjour <%= current_user.first_name %> !</span>
 
               <%= link_to "Accueil", root_path, class: 'text-white me-3' %>
               <%= link_to "Créer un événement", new_event_path, class: 'text-white me-3' %>
-            <div class="d-flex">
-              <%= link_to "Mon profil", profile_path, class: "btn btn-primary me-2" %>
-              <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+              <%= link_to "Mon profil", profile_path, class: 'text-white me-3' %>
+              <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn btn-danger-sm" %>
             </div>
             <% else %>
               <%= link_to "Accueil", root_path, class: 'text-white me-3' %>
-              <%= link_to "Se connecter", new_user_session_path %> |
-              <%= link_to "Créer un compte", new_user_registration_path %>
+              <%= link_to "Se connecter", new_user_session_path, class: 'text-white me-3' %>
+              <%= link_to "Créer un compte", new_user_registration_path, class: 'text-white' %>
             <% end %>
         </div>
       </nav>
