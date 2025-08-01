@@ -43,8 +43,8 @@
             </div>
             <% else %>
               <%= link_to "Accueil", root_path, class: 'text-white me-3' %>
-              <%= link_to "Se connecter", new_user_session_path, class: 'text-white me-3' %>
-              <%= link_to "Créer un compte", new_user_registration_path, class: 'text-white' %>
+              <%= link_to "Créer un compte", new_user_registration_path, class: 'text-white me-3' %>
+              <%= button_to "Connexion", new_user_session_path, class: "btn btn-info" %>
             <% end %>
         </div>
       </nav>

@@ -113,6 +113,10 @@ h2 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+a.text-white:hover {
+  color: #df253d !important;
+}
+
 
 
 
