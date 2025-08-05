@@ -1,26 +1,27 @@
+/*
+ *= require_self
+ *= require_tree
+ *= require theme_profile
+ */
+
+
 html, body {
   height: 100%;
 }
 
-.flash {
-  font-weight: bold;
-  text-align: center;
-  margin: 10px auto;
-  width: 90%;
-  border-radius: 5px;
-}
-
-
-.flash.notice {
-  font-family: 'Arial Black', sans-serif;
-}
-
-.flash.alert {
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-}
-
 nav {
   color: white;
+  background-color: black;
+  padding: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #df253d;
 }
 
 header {
@@ -35,36 +36,36 @@ h2 {
   text-align: center;
 }
 
-.event-card {
-  border: 4px solid hsl(357, 92%, 51%);
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 12px;
-  background-color: #f7e7e7;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  max-width: 500px;
+/* Pour le message d'inscription */
+.text-success {
+  color: #28a745 !important;
+  font-weight: 700;
 }
 
-.event-card:hover {
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  transform: translateY(-5px);
+.text {
+  color: pink;
+  font-size: xx-large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.event-card h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+a.text-white:hover {
+  color: #df253d !important;
 }
 
-.event-card p {
-  margin: 6px 0;
-  font-size: 1rem;
-  color: #333;
+.flash {
+  font-weight: bold;
+  text-align: center;
+  margin: 10px auto;
+  width: 90%;
+  border-radius: 5px;
 }
 
-.event-card p strong {
-  color: #555;
+.flash.notice {
+  font-family: 'Arial Black', sans-serif;
+}
+
+.flash.alert {
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
 }
 
 .btn-primary {
@@ -99,22 +100,35 @@ h2 {
   border-color: #df253d;
 }
 
-/* Pour le message d'inscription */
-.text-success {
-  color: #28a745 !important;
-  font-weight: 700;
+.event-card {
+  border: 4px solid hsl(357, 92%, 51%);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  background-color: #f7e7e7;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  max-width: 500px;
 }
 
-.text {
-  color: pink;
-  font-size: xx-large;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+.event-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
 }
 
-a.text-white:hover {
-  color: #df253d !important;
+.event-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 
+.event-card p {
+  margin: 6px 0;
+  font-size: 1rem;
+  color: #333;
+}
 
-
+.event-card p strong {
+  color: #555;
+}
 
