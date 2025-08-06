@@ -1,2 +1,29 @@
-<h1>Admin Dashboard</h1>
-<p>Bienvenue, <%= current_user.email %> 👋</p>
+<h1>🎛️ Admin Dashboard</h1>
+<p>Bienvenue, <strong><%= current_user.email %></strong> 👋</p>
+
+<hr>
+
+<%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+
+<div style="display: flex; gap: 2rem; margin-top: 2rem;">
+
+  <!-- Colonne de gauche : Statistiques -->
+  <div style="flex: 1;">
+    <h2>📊 Statistiques rapides</h2>
+    <ul style="list-style: none; padding-left: 0;">
+      <li>👥 Utilisateurs : <strong><%= User.count %></strong></li>
+      <li>👑 Admins : <strong><%= User.where(is_admin: true).count %></strong></li>
+      <li>📅 Événements : <strong><%= Event.count %></strong></li>
+      <li>🎟️ Participations : <strong><%= Attendance.count %></strong></li>
+    </ul>
+  </div>
+
+  <!-- Colonne de droite : Liens rapides -->
+  <div style="flex: 1;">
+    <h2>🔗 Accès rapides</h2>
+    <ul style="list-style: none; padding-left: 0;">
+      <li><%= link_to "👥 Gérer les utilisateurs", admin_users_path %></li>
+      <li><%= link_to "🏠 Retour au site public", root_path %></li>
+    </ul>
+  </div>
+</div>
