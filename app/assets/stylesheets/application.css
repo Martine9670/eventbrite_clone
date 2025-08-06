@@ -4,9 +4,12 @@
  *= require theme_profile
  */
 
-
 html, body {
   height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -125,4 +128,64 @@ a.text-white:hover {
 .user-row div {
   flex: 1;
 }
+
+.hero {
+  height: 100vh; /* prend toute la hauteur de l'écran */
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  color: black; /* Texte noir car fond rose */
+  padding: 2rem;
+}
+
+.hero-overlay {
+  background-color: rgba(255, 255, 255, 0.7); /* fond blanc semi-transparent */
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 700px;
+  width: 90%;
+}
+
+/* Espacer les titres */
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-overlay h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  margin-bottom: 5rem;
+}
+
+.hero h3 {
+  margin-bottom: 5rem;
+}
+
+/* Bouton stylé */
+#show-events-btn {
+  margin-top: 3rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  background-color: #f1d170; /* Jaune doux */
+  color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#show-events-btn:hover {
+  background-color: #ec8549;
+}
+
 
