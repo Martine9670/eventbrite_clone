@@ -35,17 +35,17 @@
   </head>
 
  <body class="d-flex flex-column">
-    <header class="p-4 mb-4">
+    <header class="p-2">
       <nav class="container-fluid d-flex justify-content-between align-items-center">            
-        <h1 class="h1 m-0">💡 Eventbrite-Clone 💡</h1>
+        <h1 class="h1">💡 Eventbrite-Clone 💡</h1>
         <% if current_user&.is_admin? %>
         <%= link_to "Admin Dashboard", admin_dashboard_path %>
       <% end %>
 
         <div>
-            <div class="d-flex p-2">
+            <div class="d-flex">
               <% if user_signed_in? %>
-              <span class="text me-3"><br>Bonjour <%= current_user.first_name %> !</span>
+              <span class="text"><br>Bonjour <%= current_user.first_name %> !</span>
 
               <%= link_to "Accueil", root_path, class: 'text-white me-3' %>
               <%= link_to "Créer un événement", new_event_path, class: 'text-white me-3' %>
@@ -61,7 +61,7 @@
       </nav>
     </header>
 
-     <main class="container flex-grow-1">
+    <main class="<%= current_page?(root_path) ? 'p-0 m-0' : 'container flex-grow-1' %>">
       <% flash.each do |type, message| %>
         <div class="alert alert-<%= type == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
           <%= message %>
