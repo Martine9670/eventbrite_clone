@@ -1,30 +1,33 @@
-<h1>Liste des utilisateurs</h1>
+<%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
 
-<div class="user-list">
+<div class="user-list-wrapper">
+  <h1>Liste des utilisateurs</h1>
+    <div class="user-list">
 
-  <% @users.each do |user| %>
-    <div class="user-row">
-      <div><%= user.email %></div>
-      <div><%= user.is_admin? ? "✅" : "❌" %></div>
-      <div>
-        <% if user != current_user %>
-          <form action="<%= admin_user_path(user) %>" method="post" style="display:inline-block;" onsubmit="return confirm('Tu es sûr(e) de vouloir effectuer cette action ?');">
-            <input type="hidden" name="_method" value="patch">
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input type="submit" value="<%= user.is_admin? ? '🔽 Rétrograder' : '✅ Promouvoir admin' %>">
-          </form>
+      <% @users.each do |user| %>
+        <div class="user-row">
+          <div><%= user.email %></div>
+          <div><%= user.is_admin? ? "✅" : "❌" %></div>
+          <div>
+            <% if user != current_user %>
+              <form action="<%= admin_user_path(user) %>" method="post" style="display:inline-block;" onsubmit="return confirm('Tu es sûr(e) de vouloir effectuer cette action ?');">
+                <input type="hidden" name="_method" value="patch">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="submit" value="<%= user.is_admin? ? '🔽 Rétrograder' : '✅ Promouvoir admin' %>">
+              </form>
 
-           <!-- Bouton suppression -->
-          <form action="<%= admin_user_path(user) %>" method="post" style="display:inline-block;" onsubmit="return confirm('Tu es sûr(e) de vouloir supprimer cet utilisateur ?');">
-            <input type="hidden" name="_method" value="delete">
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input type="submit" value="🗑️ Supprimer cet utilisateur">
-          </form>
-        <% else %>
-          (Moi)
-        <% end %>
-      </div>
+              <!-- Bouton suppression -->
+              <form action="<%= admin_user_path(user) %>" method="post" style="display:inline-block;" onsubmit="return confirm('Tu es sûr(e) de vouloir supprimer cet utilisateur ?');">
+                <input type="hidden" name="_method" value="delete">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="submit" value="🗑️ Supprimer cet utilisateur">
+              </form>
+            <% else %>
+              (Moi)
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
 </div>
 

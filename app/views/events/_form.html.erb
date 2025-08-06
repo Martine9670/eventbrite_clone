@@ -1,13 +1,13 @@
 <%= form_with model: @event, local: true, html: { multipart: true } do |form| %>  <% if @event.errors.any? %>
-    <div class="alert alert-danger">
-      <h4><%= pluralize(@event.errors.count, "erreur") %> Échec de la sauvegarde :</h4>
-      <ul>
-        <% @event.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="alert alert-danger">
+    <h4><%= pluralize(@event.errors.count, "erreur") %> Échec de la sauvegarde :</h4>
+    <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
   <div class="mb-3">
     <%= form.label :title %>
@@ -21,13 +21,12 @@
 
   <div class="mb-3">
     <%= form.label :start_date, "Date et heure de début" %><br/>
-
-<%= form.datetime_select :start_date,
-  start_year: Date.today.year,
-  end_year: Date.today.year + 5,
-  order: [:day, :month, :year],
-  minute_step: 15,
-  select_html: { class: "form-select d-inline w-auto me-2" } %>
+    <%= form.datetime_select :start_date,
+      start_year: Date.today.year,
+      end_year: Date.today.year + 5,
+      order: [:day, :month, :year],
+      minute_step: 15,
+      select_html: { class: "form-select d-inline w-auto me-2" } %>
 
   <div class="mb-3">
     <%= form.label :duration, "Durée (en minutes)" %>

@@ -53,7 +53,7 @@
         <% if @event.free? %>
           <%= button_to "S’inscrire gratuitement", checkout_event_path(@event), method: :post, data: { turbo: false }, class: "btn btn-success mt-2" %>
         <% else %>
-          <%= button_to "Payer cet événement", checkout_event_path(@event), method: :post, data: { turbo: false }, class: "btn btn-success mt-2" %>
+          <%= button_to "Paiement pour valider votre inscription", checkout_event_path(@event), method: :post, data: { turbo: false }, class: "btn btn-success mt-2" %>
         <% end %>
       <% end %>
     <% end %>

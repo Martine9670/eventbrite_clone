@@ -18,7 +18,6 @@
         <div class="col-md-4 mb-4">
           <div class="card event-card">
             <div class="card-body">
-              <h6 class="text-muted">Cliquez pour plus de détails</h6>
               <h4 class="card-title"><%= link_to event.title, event_path(event), class: "stretched-link" %></h4>
               <p><strong>Lieu :</strong> <%= event.location %></p>
               <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y à %Hh%M") %></p>
@@ -27,10 +26,10 @@
                 <% if event.participants.include?(current_user) %>
                   <p class="text-success fw-bold">Tu es déjà inscrit à cet événement 🎉</p>
                 <% else %>
-                  <%= button_to "Payer pour s'inscrire", checkout_event_path(event), method: :post, data: { turbo: false }, class: "btn btn-success" %>
+                  <%= button_to "Inscription et Paiement", checkout_event_path(event), method: :post, data: { turbo: false }, class: "btn btn-success" %>
                 <% end %>
               <% else %>
-                <%= link_to "Connectez-vous pour vous inscrire", new_user_session_path, class: "btn btn-primary" %>
+                <%= link_to "Connectez-vous pour plus de détails", new_user_session_path, class: "btn btn-primary" %>
               <% end %>
             </div>
           </div>
