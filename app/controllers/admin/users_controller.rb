@@ -12,6 +12,19 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path, notice: "Mise à jour OK"
   end
 
+   def destroy
+    user = User.find(params[:id])
+    if user == current_user
+      redirect_to admin_users_path, alert: "Tu ne peux pas te supprimer toi-même !"
+    elsif user.is_admin?
+      redirect_to admin_users_path, alert: "Impossible de supprimer un admin pour des raisons de sécurité."
+    else
+      user.destroy
+      redirect_to admin_users_path, notice: "Utilisateur supprimé ✅"
+    end
+  end
+
+
   private
 
   def check_if_admin

@@ -1,30 +1,30 @@
 <h1>Liste des utilisateurs</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Admin ?</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.is_admin? ? "✅" : "❌" %></td>
-        <td>
-          <% unless user == current_user %>
-            <%= button_to (user.is_admin? ? "Rétrograder" : "Promouvoir"),
-                admin_user_path(user),
-                method: :patch,
-                data: { confirm: "Es-tu sûr(e) ?", turbo: false },
-                class: "btn btn-sm #{user.is_admin? ? 'btn-danger' : 'btn-success'}" %>
-          <% else %>
-            <em>(vous)</em>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="user-list">
+
+  <% @users.each do |user| %>
+    <div class="user-row">
+      <div><%= user.email %></div>
+      <div><%= user.is_admin? ? "✅" : "❌" %></div>
+      <div>
+        <% if user != current_user %>
+          <form action="<%= admin_user_path(user) %>" method="post" style="display:inline-block;" onsubmit="return confirm('Tu es sûr(e) de vouloir effectuer cette action ?');">
+            <input type="hidden" name="_method" value="patch">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="submit" value="<%= user.is_admin? ? '🔽 Rétrograder' : '✅ Promouvoir admin' %>">
+          </form>
+
+           <!-- Bouton suppression -->
+          <form action="<%= admin_user_path(user) %>" method="post" style="display:inline-block;" onsubmit="return confirm('Tu es sûr(e) de vouloir supprimer cet utilisateur ?');">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="submit" value="🗑️ Supprimer cet utilisateur">
+          </form>
+        <% else %>
+          (Moi)
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

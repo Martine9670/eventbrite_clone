@@ -113,3 +113,16 @@ a.text-white:hover {
 .input-small {
   max-width: 100px;
 }
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
+}
+
+.user-row div {
+  flex: 1;
+}
+
