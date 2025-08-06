@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "theme_profile", media: "all", "data-turbo-track": "reload" %>
 
-<h1>Modifier mon profil</h1>
+<h2>Modifier mon profil</h2>
 
 <% if @user.avatar.attached? %>
   <%= image_tag @user.avatar.variant(resize_to_fill: [150, 150]), class: "rounded-circle mb-3" %>

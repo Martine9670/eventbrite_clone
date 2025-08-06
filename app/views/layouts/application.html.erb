@@ -31,13 +31,17 @@
       <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
       <%= javascript_importmap_tags %>
       <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
+      <%= stylesheet_link_tag "nav", media: "all", "data-turbo-track": "reload" %>
   </head>
 
  <body class="d-flex flex-column">
     <header class="p-4 mb-4">
       <nav class="container-fluid d-flex justify-content-between align-items-center">            
         <h1 class="h1 m-0">💡 Eventbrite-Clone 💡</h1>
+        <% if current_user&.is_admin? %>
+  <%= link_to "Admin Dashboard", admin_dashboard_path %>
+<% end %>
+
         <div>
             <div class="d-flex p-2">
               <% if user_signed_in? %>

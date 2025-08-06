@@ -1,0 +1,30 @@
+<h1>Liste des utilisateurs</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Admin ?</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.is_admin? ? "✅" : "❌" %></td>
+        <td>
+          <% unless user == current_user %>
+            <%= button_to (user.is_admin? ? "Rétrograder" : "Promouvoir"),
+                admin_user_path(user),
+                method: :patch,
+                data: { confirm: "Es-tu sûr(e) ?", turbo: false },
+                class: "btn btn-sm #{user.is_admin? ? 'btn-danger' : 'btn-success'}" %>
+          <% else %>
+            <em>(vous)</em>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

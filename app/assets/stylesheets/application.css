@@ -9,37 +9,8 @@ html, body {
   height: 100%;
 }
 
-nav {
-  color: white;
-  background-color: black;
-  padding: 1rem;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: #df253d;
-}
-
-header {
-  background-color: black;
-}
-
-.input-small {
-  max-width: 100px;
-}
-
-h2 {
-  text-align: center;
-}
-
-/* Pour le message d'inscription */
-.text-success {
-  color: #28a745 !important;
-  font-weight: 700;
+h1 {
+  color: red;
 }
 
 .text {
@@ -51,6 +22,13 @@ h2 {
 a.text-white:hover {
   color: #df253d !important;
 }
+
+/* Pour le message d'inscription */
+.text-success {
+  color: #28a745 !important;
+  font-weight: 700;
+}
+
 
 .flash {
   font-weight: bold;
@@ -132,3 +110,6 @@ a.text-white:hover {
   color: #555;
 }
 
+.input-small {
+  max-width: 100px;
+}
