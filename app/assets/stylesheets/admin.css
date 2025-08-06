@@ -14,3 +14,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.admin-wrapper {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-top: 2rem;
+}
