@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :participants, through: :attendances, source: :user
 
+  scope :validated, -> { where(validated: true, reviewed: true) }
+
   has_one_attached :image
   validates :image, presence: true
 

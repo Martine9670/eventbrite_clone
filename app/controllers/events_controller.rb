@@ -3,6 +3,10 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authorize_event_owner, only: [:edit, :update, :destroy]
 
+  def index
+    @events = Event.where(validated: true).order(start_date: :asc)
+  end
+
   def new
     @event = Event.new
   end
@@ -18,7 +22,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    # @event est déjà défini par set_event
+    @event = Event.find(params[:id])
+
+    unless @event.validated && @event.reviewed
+      redirect_to root_path, alert: "Cet événement est en cours de validation."
+    end
   end
 
   def edit

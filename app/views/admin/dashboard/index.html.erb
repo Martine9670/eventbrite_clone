@@ -23,6 +23,9 @@
     <div style="flex: 1;">
       <h2>🔗 Accès rapides</h2>
       <ul style="list-style: none; padding-left: 0;">
+        <li><%= link_to "📋 Voir tous les événements", admin_events_path %></li>
+        <li><%= link_to "🟡 Événements à valider", pending_admin_events_path %></li>
+        <li><%= link_to "🕰️ Événements passés à supprimer", past_admin_events_path %></li>
         <li><%= link_to "👥 Gérer les utilisateurs", admin_users_path %></li>
         <li><%= link_to "🏠 Retour au site public", root_path %></li>
       </ul>

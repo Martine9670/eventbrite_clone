@@ -1,0 +1,26 @@
+<h1>🕰️ Événements passés</h1>
+
+<% if @events.any? %>
+  <% @events.each do |event| %>
+    <div style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
+      <h2><%= event.title %></h2>
+      <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y à %Hh") %></p>
+      <p><strong>Statut :</strong>
+        <% if event.validated.nil? %>
+          🟡 En attente
+        <% elsif event.validated %>
+          ✅ Validé
+        <% else %>
+          ❌ Refusé
+        <% end %>
+      </p>
+
+      <%= button_to '🗑 Supprimer', admin_event_path(event),
+          method: :delete,
+          data: { confirm: "Tu veux vraiment supprimer cet ancien événement ?" },
+          class: "btn btn-danger" %>
+    </div>
+  <% end %>
+<% else %>
+  <p>✅ Aucun événement passé à supprimer.</p>
+<% end %>

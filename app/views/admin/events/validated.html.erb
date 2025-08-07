@@ -1,0 +1,15 @@
+<h1>✅ Événements validés</h1>
+
+<% if @events.any? %>
+  <% @events.each do |event| %>
+    <div style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
+      <h2><%= event.title %></h2>
+      <p><strong>Organisateur :</strong> <%= event.user.email %></p>
+      <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y") %></p>
+
+      <%= link_to "🗑 Supprimer", admin_event_path(event), method: :delete, data: { confirm: "Tu es sûr.e ?" } %>
+    </div>
+  <% end %>
+<% else %>
+  <p>Il n'y a aucun événement validé.</p>
+<% end %>

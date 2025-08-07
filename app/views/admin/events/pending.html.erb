@@ -1,0 +1,33 @@
+<h1>🕵️‍♀️ Événements en attente de validation</h1>
+
+<% if @events.any? %>
+  <% @events.each do |event| %>
+    <div style="border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+      <h2><%= event.title %></h2>
+      <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y à %Hh") %></p>
+      <p><strong>Organisé par :</strong> <%= event.user.email %></p>
+      <p><strong>Description :</strong> <%= event.description %></p>
+
+      <p>
+        <strong>Statut :</strong>
+        <% if event.validated.nil? %>
+          🟡 En attente de validation
+        <% elsif event.validated == true %>
+          ✅ Validé
+        <% else %>
+          ❌ Refusé
+        <% end %>
+      </p>
+
+      <%= button_to "✅ Valider", validate_admin_event_path(event), method: :patch, data: { confirm: "Tu confirmes la validation de cet événement ?" } %>
+      <%= button_to "❌ Refuser", reject_admin_event_path(event), method: :patch, data: { confirm: "Refuser cet événement ?" } %>
+      <%= link_to "🗑️ Supprimer", admin_event_path(event),
+            method: :delete,
+            data: { confirm: "Tu es sûr de vouloir supprimer cet événement ?" },
+            class: "btn btn-danger" %>
+
+    </div>
+  <% end %>
+<% else %>
+  <p>Aucun événement à valider pour le moment.</p>
+<% end %>
