@@ -4,14 +4,14 @@
 <div class="hero" id="hero">
   <div class="overlay">
     <h1>Bienvenue sur Eventbrite-Clone</h1>
-    <h3>Découvre et participe à des événements inoubliables !</h3>
+    <h2>Découvre et participe à des événements inoubliables !</h2>
     <button id="show-events-btn">🎟️ Voir et s'inscrire aux événements</button>
   </div>
 </div>
 
 <!-- SECTION DES ÉVÉNEMENTS - CACHÉE AU DÉBUT -->
 <div id="events-section" style="display: none;">
-  <h2>🔥 Événements à venir 🔥</h2>
+  <h2 class="titre-evenements">🔥 Événements à venir 🔥</h2>
    <div class="container">
     <div class="row">
       <% @events.each do |event| %>
