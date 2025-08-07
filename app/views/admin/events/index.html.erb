@@ -6,7 +6,7 @@
       <h2><%= event.title %></h2>
       <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y à %Hh") %></p>
       <p><strong>Statut :</strong>
-        <% if event.validated.nil? %>
+        <% if !event.reviewed %>
           🟡 En attente
         <% elsif event.validated %>
           ✅ Validé
