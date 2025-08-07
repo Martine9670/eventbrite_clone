@@ -1,13 +1,13 @@
 <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
 
 <div class="user-list-wrapper">
-  <h1>Liste des admins et utilisateurs</h1>
+  <h1>Liste des ✅ admins et ⛔️ utilisateurs</h1>
     <div class="user-list">
 
       <% @users.each do |user| %>
         <div class="user-row">
           <div><%= user.email %></div>
-          <div><%= user.is_admin? ? "✅" : "❌" %></div>
+          <div><%= user.is_admin? ? "✅" : "⛔️" %></div>
           <div>
             <% if user != current_user %>
               <form action="<%= admin_user_path(user) %>" method="post" style="display:inline-block;" onsubmit="return confirm('Tu es sûr(e) de vouloir effectuer cette action ?');">
