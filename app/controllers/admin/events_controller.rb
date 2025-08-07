@@ -16,7 +16,10 @@ class Admin::EventsController < ApplicationController
         redirect_to validated_admin_events_path, notice: "✅ Événement validé !"
     end
 
-    
+    def validated
+        @events = Event.where(validated: true).order(start_date: :desc)
+    end
+
     def reject
         @event = Event.find(params[:id])
         @event.update(validated: false, reviewed: true)
