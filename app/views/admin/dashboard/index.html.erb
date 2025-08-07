@@ -1,17 +1,16 @@
 <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
 
-<div class="admin-wrapper">
+<div class="admin-dashboard">
   <h1>🎛️ Admin Dashboard</h1>
   <p>Bienvenue, <strong><%= current_user.email %></strong> 👋</p>
 
   <hr>
 
-  <div style="display: flex; gap: 2rem; margin-top: 2rem;">
-
+  <div class="admin-dashboard-columns">
     <!-- Colonne de gauche : Statistiques -->
-    <div style="flex: 1;">
+    <div class="admin-column">
       <h2>📊 Statistiques rapides</h2>
-      <ul style="list-style: none; padding-left: 0;">
+      <ul class="admin-list">
         <li>👥 Utilisateurs : <strong><%= User.count %></strong></li>
         <li>👑 Admins : <strong><%= User.where(is_admin: true).count %></strong></li>
         <li>📅 Événements : <strong><%= Event.count %></strong></li>
@@ -20,9 +19,9 @@
     </div>
 
     <!-- Colonne de droite : Liens rapides -->
-    <div style="flex: 1;">
+    <div class="admin-column">
       <h2>🔗 Accès rapides</h2>
-      <ul style="list-style: none; padding-left: 0;">
+      <ul class="admin-list">
         <li><%= link_to "📋 Voir tous les événements", admin_events_path %></li>
         <li><%= link_to "✅ Événements acceptés", validated_admin_events_path %></li>
         <li><%= link_to "🟡 Événements à valider", pending_admin_events_path %></li>
