@@ -46,9 +46,16 @@
     const eventsSection = document.getElementById("events-section");
     const heroSection = document.getElementById("hero");
 
-    bouton.addEventListener("click", function () {
-      eventsSection.style.display = "block"; // affiche les events
-      heroSection.style.display = "none";    // cache la landing
-    });
+    function showEvents() {
+      eventsSection.style.display = "block";
+      heroSection.style.display = "none";
+    }
+
+    bouton.addEventListener("click", showEvents);
+
+    // 👉 Si l'URL contient #events, on affiche directement la section
+    if (window.location.hash === "#events") {
+      showEvents();
+    }
   });
 </script>

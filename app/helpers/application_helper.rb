@@ -6,4 +6,12 @@ module ApplicationHelper
     else "info"
     end
   end
+
+def back_to_events_list_path
+    if user_signed_in?
+      root_path
+    else
+      "#"
+    end
+  end
 end

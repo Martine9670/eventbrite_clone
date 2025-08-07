@@ -4,6 +4,8 @@
   <p class="flash alert">Paiement annulé.</p>
 <% end %>
 
+<%= link_to "⬅️ Retour à la liste des événements", root_path(anchor: "events"), class: "btn btn-info" %>
+
 <div class="container">
   <h1 class="mb-3"><%= @event.title %></h1>
   <p><strong>Organisé par :</strong> <%= @event.user.first_name %> <%= @event.user.last_name %></p>
