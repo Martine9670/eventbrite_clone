@@ -61,7 +61,7 @@
       </nav>
     </header>
 
-    <main class="<%= current_page?(root_path) ? 'p-0 m-0' : 'container flex-grow-1' %>">
+    <main class="main-content <%= current_page?(root_path) ? 'p-0 m-0' : 'container flex-grow-1' %>">
       <% flash.each do |type, message| %>
         <div class="alert alert-<%= type == "notice" ? "success" : "danger" %> alert-dismissible fade show" role="alert">
           <%= message %>

@@ -14,6 +14,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.main-content {
+  padding-top: 100px; /* Ajuste selon la hauteur de ta navbar */
+}
+
 h1 {
   color: red;
 }
@@ -33,7 +37,6 @@ a.text-white:hover {
   color: #28a745 !important;
   font-weight: 700;
 }
-
 
 .flash {
   font-weight: bold;

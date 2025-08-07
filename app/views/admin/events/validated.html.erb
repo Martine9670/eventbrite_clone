@@ -1,8 +1,10 @@
+<%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+
 <h2>✅ Événements validés</h2>
 
 <% if @events.any? %>
   <% @events.each do |event| %>
-    <div style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem;">
+    <div class="admin-card">
       <h2><%= event.title %></h2>
       <p><strong>Organisateur :</strong> <%= event.user.email %></p>
       <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y") %></p>
