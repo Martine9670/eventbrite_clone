@@ -1,0 +1,11 @@
+<%= stylesheet_link_tag "theme_profile", media: "all", "data-turbo-track": "reload" %>
+
+<h2>Participants à : <%= @event.title %></h2>
+
+<ul>
+  <% @participants.each do |participant| %>
+    <li><%= participant.first_name %> <%= participant.last_name %> - <%= participant.email %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Retour à l'événement", event_path(@event), class: "btn btn-info" %>

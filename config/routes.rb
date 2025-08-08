@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     post 'checkout', on: :member, to: 'checkout#create'
     get 'attendance_success', on: :member, to: 'attendances#success'
     post 'join', on: :member
+    get 'participants', on: :member
   end
 
   # Test de santé Rails

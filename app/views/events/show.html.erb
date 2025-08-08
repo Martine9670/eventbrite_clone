@@ -33,22 +33,16 @@
 
   <% if user_signed_in? %>
     <% if current_user.id == @event.user_id %>
-      <!-- Organisateur : liste des participants et boutons -->
-      <h5>Liste des participants :</h5>
-      <ul>
-        <% @event.participants.each do |participant| %>
-          <li><%= participant.first_name %> <%= participant.last_name %> - <%= participant.email %></li>
-        <% end %>
-      </ul>
-
+      <!-- Organisateur -->
       <div class="d-flex gap-2">
+        <%= link_to "Accéder à la liste des participants", participants_event_path(@event), class: "btn btn-info" %>
         <%= link_to "Modifier l'événement", edit_event_path(@event), class: "btn btn-warning me-2" %>
         <%= button_to "Supprimer l'événement", event_path(@event), method: :delete,
-          data: { turbo: false, confirm: "Tu es sûr(e) de vouloir supprimer cet événement ?" },
-          class: "btn btn-danger" %>
+            data: { turbo: false, confirm: "Tu es sûr(e) de vouloir supprimer cet événement ?" },
+            class: "btn btn-danger" %>
       </div>
-    <% else %>
 
+    <% else %>
       <!-- Utilisateur connecté, pas organisateur -->
       <% if @event.participants.include?(current_user) %>
         <p class="text-success fw-bold">Tu es déjà inscrit à cet événement 🎉</p>
@@ -60,6 +54,7 @@
         <% end %>
       <% end %>
     <% end %>
+
   <% else %>
     <!-- Utilisateur non connecté -->
     <p class="text-muted">Connecte-toi pour t’inscrire à cet événement.</p>

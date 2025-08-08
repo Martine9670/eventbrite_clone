@@ -29,6 +29,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def participants
+    @event = Event.find(params[:id])
+    @participants = @event.participants
+
+    # Optionnel : accès réservé à l'organisateur
+    unless current_user == @event.user
+      redirect_to event_path(@event), alert: "Accès interdit."
+    end
+  end
+
+
   def edit
     # @event est déjà défini par set_event
   end
