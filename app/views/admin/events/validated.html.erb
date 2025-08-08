@@ -9,7 +9,7 @@
       <p><strong>Organisateur :</strong> <%= event.user.email %></p>
       <p><strong>Date :</strong> <%= event.start_date.strftime("%d/%m/%Y") %></p>
 
-      <%= link_to "🗑 Supprimer", admin_event_path(event), method: :delete, data: { confirm: "Tu es sûr.e ?" } %>
+      <%= link_to "🗑 Supprimer", admin_event_path(event), method: :delete, data: { confirm: "Tu es sûr.e ?" }, class: "btn btn-danger" %>
     </div>
   <% end %>
 <% else %>
