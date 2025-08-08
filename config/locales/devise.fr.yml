@@ -12,6 +12,14 @@ fr:
       signed_out: "Déconnexion réussie."
       already_signed_out: "Tu es déjà déconnecté(e)."
 
+    registrations:
+      user:
+        signed_up: "🎉 Inscription réussie ! 🎉"
+        updated: "Ton compte a bien été mis à jour."
+        destroyed: "Ton compte a été supprimé."
+
+      signed_up: "🎉 Inscription réussie ! 🎉"
+
     failure:
       unauthenticated: "Vous devez vous connecter pour accéder à cette page."
       already_authenticated: "Vous êtes déjà connecté(e)."
