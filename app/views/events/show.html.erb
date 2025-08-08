@@ -8,14 +8,15 @@
   root_path(anchor: "events"), 
   class: "btn btn-info" %>
 
-<div class="container">
   <h1 class="mb-3"><%= @event.title %></h1>
-    <p><strong>Organisé par :</strong> <%= @event.user.first_name %> <%= @event.user.last_name %></p>
-    <p><strong>Description :</strong> <%= @event.description %></p>
-    <p><strong>Date :</strong> <%= l(@event.start_date, format: :long) %></p>
-    <p><strong>Durée :</strong> <%= @event.duration %> minutes</p>
-    <p><strong>Lieu :</strong> <%= @event.location %></p>
-    <p><strong>Prix :</strong> <%= @event.price %> €</p>
+
+    <div class="container">
+      <p><strong>Organisé par :</strong> <%= @event.user.first_name %> <%= @event.user.last_name %></p>
+      <p><strong>Description :</strong> <%= @event.description %></p>
+      <p><strong>Date :</strong> <%= l(@event.start_date, format: :long) %></p>
+      <p><strong>Durée :</strong> <%= @event.duration %> minutes</p>
+      <p><strong>Lieu :</strong> <%= @event.location %></p>
+      <p><strong>Prix :</strong> <%= @event.price %> €</p>
 
   <hr>
 
@@ -35,9 +36,9 @@
     <% if current_user.id == @event.user_id %>
       <!-- Organisateur -->
       <div class="d-flex gap-2">
-        <%= link_to "Accéder à la liste des participants", participants_event_path(@event), class: "btn btn-info" %>
-        <%= link_to "Modifier l'événement", edit_event_path(@event), class: "btn btn-warning me-2" %>
-        <%= button_to "Supprimer l'événement", event_path(@event), method: :delete,
+        <%= link_to "🧙‍♂️ Accéder à la liste des participants", participants_event_path(@event), class: "btn btn-info" %>
+        <%= link_to "📝  Modifier l'événement", edit_event_path(@event), class: "btn btn-warning me-2" %>
+        <%= button_to "🗑️ Supprimer l'événement", event_path(@event), method: :delete,
             data: { turbo: false, confirm: "Tu es sûr(e) de vouloir supprimer cet événement ?" },
             class: "btn btn-danger" %>
       </div>
