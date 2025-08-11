@@ -1,8 +1,22 @@
 /*
  *= require_self
- *= require_tree
- *= require theme_profile
  */
+
+ /* Kit UI - base de style globale */
+@import "kit_ui/colors";
+@import "kit_ui/buttons";
+@import "kit_ui/forms";
+@import "kit_ui/icons";
+@import "kit_ui/cards";
+@import "kit_ui/links";
+@import "kit_ui/flash";
+@import "kit_ui/typography";
+
+/* Autres fichiers */
+@import "admin";
+@import "home";
+@import "nav";
+@import "theme_profile";
 
 body, html {
   margin: 0;
@@ -15,11 +29,7 @@ html {
 }
 
 .main-content {
-  padding-top: 100px; /* Ajuste selon la hauteur de ta navbar */
-}
-
-h1 {
-  color: red;
+  padding-top: 100px;
 }
 
 .text {
@@ -30,99 +40,6 @@ h1 {
 
 a.text-white:hover {
   color: #df253d !important;
-}
-
-/* Pour le message d'inscription */
-.text-success {
-  color: #28a745 !important;
-  font-weight: 700;
-}
-
-.flash {
-  font-weight: bold;
-  text-align: center;
-  margin: 10px auto;
-  width: 90%;
-  border-radius: 5px;
-}
-
-.flash.notice {
-  font-family: 'Arial Black', sans-serif;
-}
-
-.flash.alert {
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
-.btn-danger-sm {
-  background-color: rgb(233, 66, 66);
-  border-color: red;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-}
-
-.btn-danger-sm:hover {
-  background-color: #df253d;
-  border-color: #df253d;
-}
-
-.event-card {
-  border: 4px solid hsl(357, 92%, 51%);
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 12px;
-  background-color: #f7e7e7;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.event-card:hover {
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  transform: translateY(-5px);
-}
-
-.event-card h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.event-card p {
-  margin: 6px 0;
-  font-size: 1rem;
-  color: #333;
-}
-
-.event-card p strong {
-  color: #555;
-}
-
-.input-small {
-  max-width: 100px;
 }
 
 /* Optionnel : limiter la largeur du bloc événements */

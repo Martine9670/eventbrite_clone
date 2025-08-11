@@ -1,0 +1,25 @@
+.flash {
+  font-weight: bold;
+  text-align: center;
+  margin: 10px auto;
+  width: 90%;
+  border-radius: 5px;
+}
+
+.flash.notice {
+  font-family: 'Arial Black', sans-serif;
+}
+
+.flash.alert {
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+/* Pour le message d'inscription */
+.text-success {
+  color: #28a745 !important;
+  font-weight: 700;
+}
+
+.input-small {
+  max-width: 100px;
+}

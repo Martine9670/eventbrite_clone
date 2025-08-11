@@ -50,7 +50,7 @@
               <%= link_to "Accueil", root_path, class: 'text-white me-3' %>
               <%= link_to "Créer un événement", new_event_path, class: 'text-white me-3' %>
               <%= link_to "Mon profil", profile_path, class: 'text-white me-3' %>
-              <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn btn-danger-sm" %>
+              <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
             </div>
             <% else %>
               <%= link_to "Accueil", root_path, class: 'text-white me-3' %>

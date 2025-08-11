@@ -2,10 +2,39 @@
 
 /* app/assets/stylesheets/home.css */
 
-html, body {
+.event-card {
+  border: 4px solid hsl(357, 92%, 51%);
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  background-color: #f7e7e7;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
   height: 100%;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.event-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transform: translateY(-5px);
+}
+
+.event-card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.event-card p {
+  margin: 6px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.event-card p strong {
+  color: #555;
 }
 
 .hero {
