@@ -36,11 +36,15 @@
 
  <body class="d-flex flex-column">
     <header class="p-2">
-      <nav class="container-fluid d-flex justify-content-between align-items-center">            
-        <h1 class="h1">🌍 Eventbrite-Clone 🌍</h1>
+      <nav class="container-fluid d-flex justify-content-between align-items-center"> 
+        <div class="d-flex align-items-center">
+          <%= image_tag "logo-fictif.jpg", size: "100x100", class: "rounded-circle me-2" %>
+          <h1 class="h1 mb-0">Eventbrite-Clone</h1>
+        </div>
+
         <% if current_user&.is_admin? %>
-        <%= link_to "Admin Dashboard", admin_dashboard_path %>
-      <% end %>
+          <%= link_to "Admin Dashboard", admin_dashboard_path %>
+        <% end %>
 
         <div>
             <div class="d-flex">
@@ -87,5 +91,6 @@
         }, 5000); // 5 secondes
       });
     </script>
+
   </body>
 </html>

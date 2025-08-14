@@ -4,7 +4,7 @@
 <div class="hero" id="hero">
   <div class="overlay">
     <h1>Bienvenue sur Eventbrite-Clone</h1>
-    <h2>Découvre et participe à des événements inoubliables !</h2>
+    <h2 id="typed-text">Découvre et participe à des événements inoubliables !</h2>
     <button id="show-events-btn">🎟️ Voir et s'inscrire aux événements</button>
   </div>
 </div>
@@ -59,3 +59,29 @@
     }
   });
 </script>
+
+<script>
+  const textElement = document.getElementById('typed-text');
+  const text = textElement.textContent;
+    textElement.textContent = ''; // vide le texte au départ
+
+      let index = 0;
+      const speed = 100;
+
+    function typeLetter() {
+      if (index < text.length) {
+        textElement.textContent += text.charAt(index);
+          index++;
+          setTimeout(typeLetter, speed);
+      } else {
+          // Quand la phrase est finie, on attend 1 seconde puis on recommence
+          setTimeout(() => {
+            textElement.textContent = '';
+            index = 0;
+          typeLetter();
+        }, 1000);
+      }
+    }
+  typeLetter();
+</script>
+
